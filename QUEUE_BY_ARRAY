@@ -1,0 +1,77 @@
+public class QUEUE_BY_ARRAY {
+    int front;
+    int rear;
+    int arr[];
+    QUEUE_BY_ARRAY(int size)
+    {
+        arr= new int[size];
+        front=-1;
+        rear=-1;
+    }
+    public boolean isEmpty()
+    {
+        if(front ==-1 && rear==-1) return true;
+        else return false;
+    }
+    public boolean isFull()
+    {
+        if(rear==arr.length-1) return true;
+        else return false;
+    }
+    public void enqueue(int value)
+    {
+        if((front ==-1) && (rear==-1))
+        {
+            front++;
+            rear++;
+            arr[rear]=value;
+        }
+        else
+        {
+            rear++;
+            arr[rear]=value;
+        }
+    }
+    public void dequeue()
+    {
+        if((front ==-1) && (rear==-1))
+        {
+            System.out.println("Can't Delete");
+        }
+        else if(front>rear)
+        {
+            front=rear=-1;
+        }
+        else
+        {
+            System.out.println("dequeued element:"+arr[front]);
+            arr[front]=0;
+            front++;
+        }
+    }
+    public void display()
+    {
+        if(isEmpty())
+        {
+            System.out.println("No element");
+        }
+        else
+        {
+            for (int i = front; i <= rear; i++) {
+                System.out.println(arr[i]);
+            }
+        }
+    }
+    public static void main(String[] args)
+    {
+        QUEUE_BY_ARRAY obj = new QUEUE_BY_ARRAY(6);
+        obj.enqueue(5);
+        obj.enqueue(15);
+        obj.enqueue(10);
+        obj.dequeue();
+        obj.dequeue();
+        obj.dequeue();
+        obj.enqueue(1);
+        obj.display();
+    }
+}
