@@ -1,0 +1,62 @@
+class Node1
+{
+    int data;
+    Node1 next;
+    Node1(int data)
+    {
+        this.data=data;
+    }
+}
+public class QUEUE_BY_LINKEDLIST
+{
+    Node1 front;
+    Node1 rear;
+    public boolean isEmpty()
+    {
+        if(front==null && rear == null) return true;
+        else return false;
+    }
+    public void enqueue(Node1 newnode)
+    {
+        if(isEmpty())
+        {
+            rear=front=newnode;
+        }
+        else
+        {
+            rear.next = newnode;
+            rear=newnode;
+        }
+    }
+    public void dequeue()
+    {
+        if(isEmpty())
+        {
+            System.out.println("Can't delete-No element");
+        }
+        else
+        {
+            System.out.println("dequeued element:"+front.data);
+            front=front.next;
+        }
+    }
+    public void display()
+    {
+        Node1 temp = front;
+        while(temp!=null)
+        {
+            System.out.println(temp.data);
+            temp=temp.next;
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        QUEUE_BY_LINKEDLIST obj = new QUEUE_BY_LINKEDLIST();
+        obj.enqueue(new Node1(1));
+        obj.enqueue(new Node1(2));
+        obj.dequeue();
+
+        obj.display();
+    }
+}
